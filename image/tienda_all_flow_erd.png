@@ -1,0 +1,74 @@
+digraph Tienda_All {
+	rankdir=TB size=20
+	subgraph cluster_flow {
+		color=blue label="Flowchart Semua Produk"
+		Start [label="Pengunjung masuk ke Situs" color=lightblue shape=oval style=filled]
+		Browse [label="Browse Produk" shape=box]
+		View [label="View Detail Produk" shape=box]
+		Add [label="Add to Cart" shape=box]
+		Cart [label="View Cart" shape=box]
+		Checkout [label=Checkout shape=box]
+		Payment [label="Payment (PayPal)" shape=box]
+		Confirm [label="Order Confirmation" shape=box]
+		Delivery [label="Delivery & After-sales" shape=box]
+		Start -> Browse
+		Browse -> View
+		View -> Add
+		Add -> Cart
+		Cart -> Checkout
+		Checkout -> Payment
+		Payment -> Confirm
+		Confirm -> Delivery
+		Cart -> View [label="ubah qty / hapus" style=dashed]
+		Payment -> Cart [label=gagal color=red style=dashed]
+	}
+	subgraph cluster_erd {
+		color=green label="ERD Sistem Produk Tienda"
+		users [label="<users>|users
+- id
+- name
+- email
+- address" shape=record]
+		products [label="<products>|products
+- id
+- name
+- price
+- year
+- stock" shape=record]
+		orders [label="<orders>|orders
+- id
+- user_id
+- total_amount
+- status" shape=record]
+		order_items [label="<order_items>|order_items
+- id
+- order_id
+- product_id
+- qty
+- price" shape=record]
+		payments [label="<payments>|payments
+- id
+- order_id
+- amount
+- method
+- status" shape=record]
+		deliveries [label="<deliveries>|deliveries
+- id
+- order_id
+- tracking_no
+- status" shape=record]
+		reviews [label="<reviews>|reviews
+- id
+- user_id
+- product_id
+- rating
+- comment" shape=record]
+		users -> orders [label="1..*"]
+		orders -> order_items [label="1..*"]
+		products -> order_items [label="1..*"]
+		orders -> payments [label="1..1"]
+		orders -> deliveries [label="0..1"]
+		users -> reviews [label="1..*"]
+		products -> reviews [label="1..*"]
+	}
+}

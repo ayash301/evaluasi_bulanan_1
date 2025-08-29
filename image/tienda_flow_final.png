@@ -1,0 +1,39 @@
+digraph TiendaFlowFinal {
+	rankdir=TB size=10
+	Start [label="Start - Pengunjung masuk ke situs" color=lightblue shape=oval style=filled]
+	Home [label="Home / Landing Page" color=lightgrey shape=box style="rounded,filled"]
+	Browse [label="Browse Products (Car's Collection)" shape=box style=rounded]
+	View [label="View Product Detail" shape=box style=rounded]
+	Add [label="Add to Cart" shape=box style=rounded]
+	Cart [label="View Cart" shape=box style=rounded]
+	Checkout [label=Checkout shape=box style=rounded]
+	Payment [label="Secure Payment (PayPal)" shape=box style=rounded]
+	Confirm [label="Order Confirmation" shape=box style=rounded]
+	Delivery [label="Free Delivery (Shipping)" shape=box style=rounded]
+	Returns [label="9-month Returns / Moneyback Guarantee" shape=box style=rounded]
+	After [label="After-sales / Support" shape=box style=rounded]
+	Reviews [label="Customer Reviews" shape=box style=rounded]
+	Contact [label="Contact Us / Quick Links" shape=box style=rounded]
+	Account [label="My Account" color=lightgrey shape=box style="rounded,filled"]
+	MyOrders [label="My Orders" shape=box style=rounded]
+	Fav [label="My Favorite" shape=box style=rounded]
+	Start -> Home
+	Home -> Browse
+	Browse -> View
+	View -> Add
+	Add -> Cart
+	Cart -> Checkout
+	Checkout -> Payment
+	Payment -> Confirm
+	Confirm -> Delivery
+	Delivery -> Returns
+	Returns -> After
+	Home -> Reviews
+	Home -> Contact
+	Home -> Account
+	Account -> MyOrders
+	Account -> Fav
+	Cart -> View [label="ubah qty / hapus" style=dashed]
+	Payment -> Cart [label=gagal color=red style=dashed]
+	Confirm -> Contact [label="butuh bantuan" style=dashed]
+}
