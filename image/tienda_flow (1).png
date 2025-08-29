@@ -1,0 +1,39 @@
+digraph TiendaFlow {
+	rankdir=TB size=10
+	Start [label="Start - Pengunjung masuk ke situs" shape=oval]
+	Home [label="Home / Landing Page" shape=box]
+	Browse [label="Browse Products (Car's Collection)" shape=box]
+	View [label="View Product Detail" shape=box]
+	Add [label="Add to Cart" shape=box]
+	Cart [label="View Cart" shape=box]
+	Checkout [label=Checkout shape=box]
+	Payment [label="Secure Payment (PayPal)" shape=box]
+	Confirm [label="Order Confirmation" shape=box]
+	Delivery [label="Free Delivery (Shipping)" shape=box]
+	Returns [label="9-month Returns / Moneyback Guarantee" shape=box]
+	After [label="After-sales / Support" shape=box]
+	Reviews [label="Customer Reviews" shape=box]
+	Contact [label="Contact Us / Quick Links" shape=box]
+	Account [label="My Account" shape=box]
+	MyOrders [label="My Orders" shape=box]
+	Fav [label="My Favorite" shape=box]
+	Start -> Home
+	Home -> Browse
+	Browse -> View
+	View -> Add
+	Add -> Cart
+	Cart -> Checkout
+	Checkout -> Payment
+	Payment -> Confirm
+	Confirm -> Delivery
+	Delivery -> Returns
+	Returns -> After
+	Home -> Reviews
+	Home -> Contact
+	Home -> Account
+	Account -> MyOrders
+	Account -> Fav
+	Cart -> View [label="ubah qty / hapus"]
+	Payment -> Cart [label=gagal]
+	Confirm -> Contact [label="butuh bantuan"]
+}
